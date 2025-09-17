@@ -223,6 +223,40 @@ function App() {
                       timeZone: "Europe/London",
                     }).format(date);
 
+                const dayFrom = showLondonOnLeft
+                  ? new Intl.DateTimeFormat(navigator.language, {
+                      day: "numeric",
+                      timeZone: "Europe/London",
+                    }).format(date)
+                  : new Intl.DateTimeFormat(navigator.language, {
+                      day: "numeric",
+                      timeZone: "Australia/Sydney",
+                    }).format(date);
+
+                const dayTo = showLondonOnLeft
+                  ? new Intl.DateTimeFormat(navigator.language, {
+                      day: "numeric",
+                      timeZone: "Australia/Sydney",
+                    }).format(date)
+                  : new Intl.DateTimeFormat(navigator.language, {
+                      day: "numeric",
+                      timeZone: "Europe/London",
+                    }).format(date);
+
+                let differenceFrom = "";
+                let differenceTo = "";
+
+                if (dayFrom > dayTo) {
+                  differenceFrom = "day after";
+                  differenceTo = "day before";
+                } else if (dayFrom < dayTo) {
+                  differenceFrom = "day before";
+                  differenceTo = "day after";
+                } else if (dayFrom === dayTo) {
+                  differenceFrom = "same day";
+                  differenceTo = "same day";
+                }
+
                 return (
                   <tr
                     key={index}
@@ -247,7 +281,8 @@ function App() {
                         }
                       )}
                     >
-                      {hourFromLabel}
+                      <span className="me-2">{hourFromLabel}</span>
+                      <span className="text-xs">({differenceFrom})</span>
                     </td>
                     <td
                       className={clsx(
@@ -268,7 +303,8 @@ function App() {
                         }
                       )}
                     >
-                      {hourToLabel}
+                      <span className="me-2">{hourToLabel}</span>
+                      <span className="text-xs">({differenceTo})</span>
                     </td>
                   </tr>
                 );
