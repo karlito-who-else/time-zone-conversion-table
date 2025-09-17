@@ -264,47 +264,107 @@ function App() {
                   >
                     <td
                       className={clsx(
-                        "p-4 whitespace-nowrap text-gray-200 text-sm",
+                        "p-4 whitespace-nowrap text-gray-200 bg-gradient-to-tl to-25%",
                         {
-                          "bg-gradient-to-tl to-25% from-emerald-700 to-sky-950 text-gray-200":
-                            timesOfDay.night.includes(
-                              Number.parseInt(hourFrom24)
-                            ),
-                          "bg-gradient-to-tl to-25% from-amber-200 to-sky-200 text-gray-800":
-                            timesOfDay.workingDay.includes(
-                              Number.parseInt(hourFrom24)
-                            ),
-                          "bg-gradient-to-tl to-25% from-amber-700 to-sky-700 text-gray-200":
-                            timesOfDay.evening.includes(
-                              Number.parseInt(hourFrom24)
-                            ),
+                          "from-teal-950 to-sky-950 text-gray-200": [
+                            0, 1,
+                          ].includes(Number.parseInt(hourFrom24)),
+                          "from-emerald-900 to-sky-900 text-gray-200": [
+                            22, 23, 2, 3,
+                          ].includes(Number.parseInt(hourFrom24)),
+                          "from-green-800 to-sky-800 text-gray-200": [
+                            20, 21, 4, 5,
+                          ].includes(Number.parseInt(hourFrom24)),
+                          "from-lime-700 to-sky-700 text-gray-200": [
+                            18, 19, 6, 7,
+                          ].includes(Number.parseInt(hourFrom24)),
+                          "from-yellow-600 to-sky-600 text-gray-200": [
+                            16, 17, 8, 9,
+                          ].includes(Number.parseInt(hourFrom24)),
+                          "from-amber-500 to-sky-500 text-gray-200": [
+                            14, 15, 10, 11,
+                          ].includes(Number.parseInt(hourFrom24)),
+                          "from-orange-400 to-sky-400 text-gray-200": [
+                            12, 13,
+                          ].includes(Number.parseInt(hourFrom24)),
                         }
                       )}
                     >
-                      <span className="me-2">{hourFromLabel}</span>
-                      <span className="text-xs">({differenceFrom})</span>
+                      <div className="inline-grid grid-cols-[auto_auto_auto] items-center justify-items-end gap-4">
+                        <i
+                          className={clsx(
+                            "inline-block not-italic text-4xl justify-self-start",
+                            {
+                              "before:content-['🌃']":
+                                timesOfDay.night.includes(
+                                  Number.parseInt(hourFrom24)
+                                ),
+                              "before:content-['🏙️']":
+                                timesOfDay.workingDay.includes(
+                                  Number.parseInt(hourFrom24)
+                                ),
+                              "before:content-['🌆']":
+                                timesOfDay.evening.includes(
+                                  Number.parseInt(hourFrom24)
+                                ),
+                            }
+                          )}
+                        />
+                        <span className="text-base">{hourFromLabel}</span>
+                        <span className="text-xs">({differenceFrom})</span>
+                      </div>
                     </td>
                     <td
                       className={clsx(
-                        "p-4 whitespace-nowrap text-gray-200 text-sm",
+                        "p-4 whitespace-nowrap text-gray-200 bg-gradient-to-tl to-25%",
                         {
-                          "bg-gradient-to-tl to-25% from-emerald-700 to-sky-950 text-gray-200":
-                            timesOfDay.night.includes(
-                              Number.parseInt(hourTo24)
-                            ),
-                          "bg-gradient-to-tl to-25% from-amber-200 to-sky-200 text-gray-800":
-                            timesOfDay.workingDay.includes(
-                              Number.parseInt(hourTo24)
-                            ),
-                          "bg-gradient-to-tl to-25% from-amber-700 to-sky-700 text-gray-200":
-                            timesOfDay.evening.includes(
-                              Number.parseInt(hourTo24)
-                            ),
+                          "from-teal-950 to-sky-950 text-gray-200": [
+                            0, 1,
+                          ].includes(Number.parseInt(hourTo24)),
+                          "from-emerald-900 to-sky-900 text-gray-200": [
+                            22, 23, 2, 3,
+                          ].includes(Number.parseInt(hourTo24)),
+                          "from-green-800 to-sky-800 text-gray-200": [
+                            20, 21, 4, 5,
+                          ].includes(Number.parseInt(hourTo24)),
+                          "from-lime-700 to-sky-700 text-gray-200": [
+                            18, 19, 6, 7,
+                          ].includes(Number.parseInt(hourTo24)),
+                          "from-yellow-600 to-sky-600 text-gray-200": [
+                            16, 17, 8, 9,
+                          ].includes(Number.parseInt(hourTo24)),
+                          "from-amber-500 to-sky-500 text-gray-200": [
+                            14, 15, 10, 11,
+                          ].includes(Number.parseInt(hourTo24)),
+                          "from-orange-400 to-sky-400 text-gray-200": [
+                            12, 13,
+                          ].includes(Number.parseInt(hourTo24)),
                         }
                       )}
                     >
-                      <span className="me-2">{hourToLabel}</span>
-                      <span className="text-xs">({differenceTo})</span>
+                      <div className="inline-grid grid-cols-[auto_auto_auto] items-center justify-items-end gap-4">
+                        <i
+                          className={clsx(
+                            "inline-block not-italic text-4xl justify-self-start",
+                            {
+                              "before:content-['🌃']":
+                                timesOfDay.night.includes(
+                                  Number.parseInt(hourTo24)
+                                ),
+                              "before:content-['🏙️']":
+                                timesOfDay.workingDay.includes(
+                                  Number.parseInt(hourTo24)
+                                ),
+                              "before:content-['🌆']":
+                                timesOfDay.evening.includes(
+                                  Number.parseInt(hourTo24)
+                                ),
+                            }
+                          )}
+                        />
+                        <span className="text-base">{hourToLabel}</span>
+                        <span className="text-xs">({differenceTo})</span>
+                      </div>
                     </td>
                   </tr>
                 );
@@ -313,26 +373,29 @@ function App() {
           </table>
         </div>
 
-        <footer className="text-gray-500 mt-12 text-sm">
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 mb-4">
+        <footer className="text-gray-500 mt-12">
+          <h2 className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 mb-4">
             Legend
           </h2>
-          <dl className="flex gap-2 justify-start w-fit text-gray-50">
-            <dt>
-              <i className="bg-gradient-to-tl to-25% from-emerald-700 to-sky-950 text-gray-200 aspect-square block size-5" />
+          <dl className="flex gap-2 items-center justify-start w-fit text-gray-50">
+            <dt className="text-4xl">
+              🌃
+              {/* <i className="bg-gradient-to-tl to-25% from-emerald-700 to-sky-950 text-gray-200 block size-5" /> */}
               <span className="sr-only">Dark Blue</span>
             </dt>
-            <dd className="me-4">Night</dd>
-            <dt>
-              <i className="bg-gradient-to-tl to-25% from-amber-700 to-sky-700 text-gray-200 aspect-square block size-5" />
+            <dd className="me-4 text-base">Night</dd>
+            <dt className="text-4xl">
+              🌆
+              {/* <i className="bg-gradient-to-tl to-25% from-amber-700 to-sky-700 text-gray-200 block size-5" /> */}
               <span className="sr-only">Medium Blue</span>
             </dt>
-            <dd className="me-4">Evening</dd>
-            <dt>
-              <i className="bg-gradient-to-tl t4-50% from-amber-200 to-sky-200 text-gray-800 aspect-square block size-5" />
+            <dd className="me-4 text-base">Evening</dd>
+            <dt className="text-4xl">
+              🏙️
+              {/* <i className="bg-gradient-to-tl t4-50% from-amber-200 to-sky-200 text-gray-800 block size-5" /> */}
               <span className="sr-only">Light Blue</span>
             </dt>
-            <dd className="me-4">Working Hours</dd>
+            <dd className="me-4 text-base">Working Hours</dd>
           </dl>
         </footer>
       </div>
