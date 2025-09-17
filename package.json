@@ -1,16 +1,12 @@
 {
-  "name": "time-zone-conversion",
+  "name": "time-zone-conversion-table",
   "description": "",
   "scripts": {
     "build": "tsc -b && vite build",
     "dev": "vite",
-    "formatjs:compile": "dotenv -c -- turbo formatjs:compile",
-    "formatjs:extract-and-compile": "dotenv -c -- turbo formatjs:extract-and-compile",
-    "formatjs:extract": "dotenv -c -- turbo formatjs:extract",
     "lint-staged": "lint-staged",
     "lint": "eslint .",
     "packages:versions:update": "pnpm update --latest -r",
-    "prebuild": "turbo formatjs:extract-and-compile",
     "preinstall": "npx only-allow pnpm",
     "prepare": "husky",
     "preview": "vite preview",
